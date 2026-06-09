@@ -1,0 +1,11 @@
+# Local config holds your Plex token — never commit it.
+config.toml
+
+# Virtual environment
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/

@@ -1,0 +1,50 @@
+# Configuration for jrmc-plex-migrate.
+# Copy this to config.toml and fill in your details.
+
+[jrmc]
+# Base URL of the JRiver Media Center Web Service (MCWS / Media Network).
+# Default port is usually 52199 (some installs use 52198).
+base_url = "http://localhost:52199/MCWS/v1/"
+# Leave username/password empty if your Library Server has no authentication.
+username = ""
+password = ""
+# Set to false if the server uses a self-signed HTTPS cert.
+verify_ssl = true
+
+[plex]
+# Base URL of your Plex Media Server.
+base_url = "http://localhost:32400"
+# Plex authentication token. See:
+# https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
+token = "YOUR_PLEX_TOKEN"
+# Name of the Plex music library section the tracks live in.
+music_section = "Music"
+
+[migrate]
+# Optional prefix added to every created Plex playlist name (helps you spot
+# migrated lists and avoid clobbering existing ones). Leave empty for none.
+playlist_prefix = ""
+# What to do if a Plex playlist with the target name already exists:
+#   "skip"    - leave it alone (default)
+#   "replace" - delete the existing one and recreate
+existing = "skip"
+# How to handle JRiver smartlists:
+#   "translate" - try to build a native Plex smart playlist; fall back to a
+#                 static snapshot when the rule is unavailable/untranslatable
+#   "static"    - always snapshot the current contents to a static playlist
+smartlists = "translate"
+# Minimum match score (0.0-1.0) for a JRMC track to be accepted as a Plex match.
+match_threshold = 0.72
+
+[matching]
+# Fields used to score a track match. You normally don't need to change these.
+require_artist = true   # a candidate must share artist (above threshold) to match
+use_album = true        # factor album into the score when present
+
+# Optional: paste the rule expression for specific smartlists here to force a
+# native Plex smart-playlist translation (use the exact JRMC search expression,
+# e.g. copied from the smartlist editor). Keyed by the JRMC playlist name.
+# Example:
+# [rules]
+# "Recently Added Rock" = "[Genre]=[Rock] [Date Imported]=>-30 ~sort=[Date Imported]-"
+[rules]
