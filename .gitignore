@@ -9,3 +9,6 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 *.egg-info/
+
+# Local Claude Code settings (personal permission overrides)
+.claude/settings.local.json

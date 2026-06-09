@@ -153,4 +153,8 @@ tests/           offline unit tests for the translator and matcher
   returns nothing or odd results on your server, run with `-v` and share the
   raw response so the parser can be adjusted — `Playlists/List` and
   `Playlist/Files` are the two endpoints involved.
-```
+
+## License
+
+[MIT](LICENSE) © 2026 Aaron Heysse. Provided "as is", without warranty of any
+kind.
